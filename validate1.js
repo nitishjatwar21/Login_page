@@ -145,5 +145,3 @@ function removeMessage(){
 		el.innerHTML="";
 	});
 }
-
-
