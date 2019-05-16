@@ -2,40 +2,51 @@ function ValidateForm() {
 	var email=document.getElementById("email");
 	var username=document.getElementById("username");
 
-	removeMessage();
-
+	// removeMessage();
+	var f=0;
 	if (email.value.length==0){
 		email.className="wrong-input";
 		email.nextElementSibling.innerHTML="  Email can't be blank";
-		valid=false;} else if(email.value.indexOf('@')<=0){
+		}else if(email.value.indexOf('@')<=0){
 		email.className="wrong-input";
 		email.nextElementSibling.innerHTML="  Invalid @ position";
-		valid=false;
+		}
+		else if(f==1){
+		name.className="form-control";
+		name.nextElementSibling.innerHTML="";
+		
 	}else{
 		email.className="form-control";
 		email.nextElementSibling.innerHTML="";
-		valid=true;
+		f=f+1;
 	}
-	if (valid==true){
-
 	if (username.value.length==0){
 		username.className="wrong-input";
 		username.nextElementSibling.innerHTML="  Username can't be blank";
-		valid=false;}else{
+		}
+		else if(f==2){
+		name.className="form-control";
+		name.nextElementSibling.innerHTML="";
+		
+		}else{
 		username.className="form-control";
 		username.nextElementSibling.innerHTML="";
-		valid=true;
-	}}
+		f=f+1;
+	}
 
+	if (f==2){
+		valid=true;
+	}else{valid=false;}
 	return valid;
 }
-function removeMessage(){
-	var errorinput=document.querySelectorAll(".wrong-input");
-	[].forEach.call(errorinput, function(el){
-		el.classList.remove("wrong-input");
-	});
-	var errorpara=document.querySelectorAll(".error");
-	[].forEach.call(errorinput, function(el){
-		el.innerHTML="";
-	});
-}
+// function removeMessage(){
+// 	var errorinput=document.querySelectorAll(".wrong-input");
+// 	[].forEach.call(errorinput, function(el){
+// 		el.classList.remove("wrong-input");
+// 	});
+// 	var errorpara=document.querySelectorAll(".error");
+// 	[].forEach.call(errorinput, function(el){
+// 		el.innerHTML="";
+// 	});
+// }
+
