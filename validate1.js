@@ -5,7 +5,7 @@ function ValidateForm() {
 	var password=document.getElementById("password");
 	var confirm_password=document.getElementById("confirm_password");
 	var age=document.getElementById("age");
-// 	removeMessage();
+	// removeMessage();
 	// pass();
 	var f=0;
 	if (name.value.length==0){
@@ -135,4 +135,14 @@ function ValidateForm() {
 	return valid;
 
 }
+// function removeMessage(){
+// 	var errorinput=document.querySelectorAll(".wrong-input");
+// 	[].forEach.call(errorinput, function(el){
+// 		el.classList.remove("wrong-input");
+// 	});
+// 	var errorpara=document.querySelectorAll(".error");
+// 	[].forEach.call(errorinput, function(el){
+// 		el.innerHTML="";
+// 	});
+// }
 
