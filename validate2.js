@@ -4,6 +4,7 @@ function ValidateForm() {
 
 	
 	var letter=/^[a-z0-9]+$/;
+	
 	var f=0;
 	if (email.value.length==0){
 		email.className="wrong-input";
@@ -26,6 +27,7 @@ function ValidateForm() {
 		email.className="form-control";
 		email.nextElementSibling.innerHTML="";
 		f=f+1;
+	}
 	if (username.value.length==0){
 		username.className="wrong-input";
 		username.nextElementSibling.innerHTML="  Username can't be blank";
@@ -56,9 +58,9 @@ function ValidateForm() {
 var b=emailfilter.test(email.value);
 if(b==false)
 {
-	
+
 		return false;
 
 }
 	}
-
+	
