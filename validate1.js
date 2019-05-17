@@ -5,8 +5,10 @@ function ValidateForm() {
 	var password=document.getElementById("password");
 	var confirm_password=document.getElementById("confirm_password");
 	var age=document.getElementById("age");
-	// removeMessage();
-	// pass();
+	
+	
+	var letter=/^[a-z0-9]+$/;
+	
 	var f=0;
 	if (name.value.length==0){
 		name.className="wrong-input";
@@ -25,9 +27,15 @@ function ValidateForm() {
 	if (email.value.length==0){
 		email.className="wrong-input";
 		email.nextElementSibling.innerHTML="  Email can't be blank";
-		}else if(email.value.indexOf('@')<=0){
+		}else if(email.value.indexOf('@',0)<=0){
 		email.className="wrong-input";
 		email.nextElementSibling.innerHTML="  Invalid @ position";
+		}else if(email.value.indexOf('.',0)<0){
+			email.className="wrong-input";
+		email.nextElementSibling.innerHTML="  Invalid . position";
+		}else if(emailvalid()==false){
+			email.className="wrong-input";
+		email.nextElementSibling.innerHTML="  Enter valid E-mail id";
 		}
 		else if(f==2){
 		name.className="form-control";
@@ -42,6 +50,12 @@ function ValidateForm() {
 	if (username.value.length==0){
 		username.className="wrong-input";
 		username.nextElementSibling.innerHTML="  Username can't be blank";
+		}else if((username.value.length<5) || (username.value.length>15)){
+			username.className="wrong-input";
+		username.nextElementSibling.innerHTML="  Username should be in range 5 - 15";
+		}else if(!username.value.match(letter)){
+			username.className="wrong-input";
+		username.nextElementSibling.innerHTML=" username should be lowercase";
 		}
 		else if(f==3){
 		name.className="form-control";
@@ -61,7 +75,7 @@ function ValidateForm() {
 		else if(f==4){
 		name.className="form-control";
 		name.nextElementSibling.innerHTML="";
-		
+		 
 	}else{
 		password.className="form-control";
 		password.nextElementSibling.innerHTML="";
@@ -135,14 +149,14 @@ function ValidateForm() {
 	return valid;
 
 }
-// function removeMessage(){
-// 	var errorinput=document.querySelectorAll(".wrong-input");
-// 	[].forEach.call(errorinput, function(el){
-// 		el.classList.remove("wrong-input");
-// 	});
-// 	var errorpara=document.querySelectorAll(".error");
-// 	[].forEach.call(errorinput, function(el){
-// 		el.innerHTML="";
-// 	});
-// }
 
+function emailvalid(){
+		var emailfilter=/^\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*\.([a-z]{2,4}|\d+)$/i
+var b=emailfilter.test(email.value);
+if(b==false)
+{
+
+		return false;
+
+}
+	}
