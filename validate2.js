@@ -34,6 +34,9 @@ function ValidateForm() {
 		}else if((username.value.length<5) || (username.value.length>15)){
 			username.className="wrong-input";
 		username.nextElementSibling.innerHTML="  Username should be in range 5 - 15";
+		}else if(username.value.match(" ")){
+			username.className="wrong-input";
+		username.nextElementSibling.innerHTML=" no blank spaces";
 		}else if(!username.value.match(letter)){
 			username.className="wrong-input";
 		username.nextElementSibling.innerHTML=" username should be lowercase";
