@@ -1,34 +1,56 @@
 <html>
     <head>
-        <title> Registered Data</title>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="validate.css">
     </head>
     <body>
-        <script>
-            function getParams(){
-                var idx = document.URL.indexOf('?');
-                var params = new Array();
-                if (idx != -1) {
-                    var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
-                    for (var i=0; i<pairs.length; i++){
-                        nameVal = pairs[i].split('=');
-                        params[nameVal[0]] = nameVal[1];
+        <h1 style="text-align: center;">Thanks for Registering!</h1>
+        <h2 style="text-align: center;"><a href="form2.html">Login Here!</a></h2>
+        
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script>
+                function getParams(){
+                    var idx = document.URL.indexOf('?');
+                    var params = new Array();
+                    if (idx != -1) {
+                        var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+                        for (var i=0; i<pairs.length; i++){
+                            nameVal = pairs[i].split('=');
+                            params[nameVal[0]] = nameVal[1];
+                        }
                     }
+                    return params;
                 }
-                return params;
-            }
-            params = getParams();
-            name = unescape(params["name"]);
-            email = unescape(params["email"]);
-            username = unescape(params["username"]);
-            age = unescape(params["age"]);
-            gender= unescape(params["gender"]);
-            favourite_colour= unescape(params["favourite_colour"]);
-            document.write("name = " + name + "<br>");
-            document.write("email = " + email + "<br>");
-            document.write("username = " + username + "<br>");
-            document.write("age = " + age + "<br>");
-            document.write("gender = " + gender + "<br>");
-            document.write("favourite_colour = " + favourite_colour + "<br>");
-        </script>
+                params = getParams();
+                name1 = unescape(params["name"]);
+                email1 = unescape(params["email"]);
+                password1 = unescape(params["password"]);
+                username1 = unescape(params["username"]);
+                age1 = unescape(params["age"]);
+                gender1 = unescape(params["gender"]);
+                favourite_colour1 = unescape(params["favourite_colour"]);
+                
+                var arr1 = {name: name1 ,email: email1 ,password: password1 ,age:parseInt(age1),color: favourite_colour1 ,username: username1 ,gender: gender1 };
+                
+                var data1 = JSON.stringify(arr1);
+                
+               
+                
+                $.ajax({
+                    url: 'https://technocracy-task-2.herokuapp.com/people',
+                    type: 'POST',
+                    data: data1,                    
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    async: true,
+                    success: function(msg) {
+                            alert("success");                     
+                    }
+                });
+            </script>
+
+        </div>
+
     </body>
 </html>
