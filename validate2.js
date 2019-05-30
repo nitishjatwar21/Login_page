@@ -28,29 +28,20 @@ function ValidateForm() {
 		email.nextElementSibling.innerHTML="";
 		f=f+1;
 	}
-	if (username.value.length==0){
-		username.className="wrong-input";
-		username.nextElementSibling.innerHTML="  Username can't be blank";
-		}else if((username.value.length<5) || (username.value.length>15)){
-			username.className="wrong-input";
-		username.nextElementSibling.innerHTML="  Username should be in range 5 - 15";
-		}else if(username.value.match(" ")){
-			username.className="wrong-input";
-		username.nextElementSibling.innerHTML=" no blank spaces";
-		}else if(!username.value.match(letter)){
-			username.className="wrong-input";
-		username.nextElementSibling.innerHTML=" username should be lowercase";
-		}
-		else if(f==2){
-		name.className="form-control";
-		name.nextElementSibling.innerHTML="";
+	if (password.value.length==0){
+		password.className="wrong-input";
+		password.nextElementSibling.innerHTML="Password can't be blank";
+	}
+	else if(f==2){
+		password.className="form-control";
+		password.nextElementSibling.innerHTML="";
 		
 		}else{
-		username.className="form-control";
-		username.nextElementSibling.innerHTML="";
+		password.className="form-control";
+		password.nextElementSibling.innerHTML="";
 		f=f+1;
 	}
-
+	
 	if (f==2){
 		valid=true;
 	}else{valid=false;}
@@ -66,5 +57,4 @@ if(b==false)
 
 }
 	}
-	
 	
