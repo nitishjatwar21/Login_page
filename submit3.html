@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="validate.css">
+    </head>
+    <body>
+        <h1 style="text-align: center;">Thanks for Update!</h1>
+        <h2 style="text-align: center;"><a href="result.html">Updated Data</a></h2>
+        <div id="particles-js">
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script>
+                function getParams(){
+                    var idx = document.URL.indexOf('?');
+                    var params = new Array();
+                    if (idx != -1) {
+                        var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+                        for (var i=0; i<pairs.length; i++){
+                            nameVal = pairs[i].split('=');
+                            params[nameVal[0]] = nameVal[1];
+                        }
+                    }
+                    return params;
+                }
+                params = getParams();
+                name1 = unescape(params["name"]);
+                email1 = unescape(params["email"]);
+                password1 = unescape(params["password"]);
+                username1 = unescape(params["username"]);
+                age1 = unescape(params["age"]);
+                gender1 = unescape(params["gender"]);
+                favourite_colour1 = unescape(params["favourite_colour"]);
+                id1 = unescape(params["id"]);
+                
+                var arr1 = {name: name1 ,email: email1 ,password: password1 ,age:parseInt(age1),color: favourite_colour1 ,username: username1 ,gender: gender1 };
+                
+                var data1 = JSON.stringify(arr1);
+
+                
+                
+                
+                $.ajax({
+                    url: 'https://technocracy-task-2.herokuapp.com/people/'+id1,
+                    type: 'PUT',
+                    data: data1,                    
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    async: true,
+                    success: function(msg) {
+                            alert("Your data is sucessfully Updated"); 
+
+                    }
+                });
+            </script>
+
+        </div>
+    </body>
+</html>
